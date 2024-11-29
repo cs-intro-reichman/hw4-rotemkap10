@@ -151,66 +151,22 @@ public class ArrCharOps {
         
     }
 
-    /**
-     * Compares the two strings lexicographically.
-     * Assume that both strings are not empty.
-     * 
-     * Characters are compared one by one from left to right, using their numeric Unicode values,
-        as follows:
-     * 1. If two characters at the same position in both strings are different,
-     *    the string with the smaller character is considered lexicographically smaller.
-     * 2. If all characters in the shorter string match the corresponding characters
-     *    in the longer string, the shorter string is considered lexicographically smaller.
-     * 3. If both strings have the same characters and the same length, they are considered equal.
-     * 
-     * Examples:
-     * - "apple" is less than "banana" because 'a' comes before 'b'.
-     * - "abc" is less than "abcd" because it is shorter.
-     * - "hello" is equal to "hello".
-     * - "date" is greater than "dark" because 't' comes after 'k'.
-     * 
-     * @param str1 the first string to compare
-     * @param str2 the second string to compare
-     * @return -1 if str1 is lexicographically less than str2,
-     *         zero if they are equal, and 1 if str1 is
-     *         lexicographically greater than str2.
-     *         return -2 if there is an error with the input.
-     */
     public static int compareTo(String str1, String str2) {
-        boolean isSame = true;
-        int x = 0;
-        if(str1.length() == str2.length())
-        {
-            for(int i =0; i<str1.length();i++)
-            {
-                if(str1.charAt(i) != str2.charAt(i))
-                {
-                    isSame = false;
-                }
-            }
-            if(isSame == true)
-            {
-                return 0;
+        int minLength = Math.min(str1.length(), str2.length());
+    
+        for (int i = 0; i < minLength; i++) {
+            if (str1.charAt(i) < str2.charAt(i)) {
+                return -1;  
+            } else if (str1.charAt(i) > str2.charAt(i)) {
+                return 1;   
             }
         }
-        if(str2.length()>str1.length())
-             x = str1.length();
-        else
-            x = str2.length();
-        for(int i =0; i<x; i++)
-        {
-            if(str1.charAt(i)<str2.charAt(i))
-                return -1;
-            if(str2.charAt(i)<str1.charAt(i))
-             return 1;
+        if (str1.length() < str2.length()) {
+            return -1;  
+        } else if (str1.length() > str2.length()) {
+            return 1;   
         }
-        if(str1.length()>str2.length())
-            return 1;
-        if(str2.length()>str1.length())
-            return -1;
-
-        return -2;
-    }   
-
+        return 0;  
+    }
 }
 

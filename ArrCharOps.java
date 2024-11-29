@@ -166,7 +166,12 @@ public class ArrCharOps {
         } else if (str1.length() > str2.length()) {
             return 1;   
         }
-        return 0;  
+        if(str1.length() == str2.length())
+        {
+            return 0;  
+        }
+        return -2;
+        
     }
 }
 

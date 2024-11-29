@@ -153,7 +153,9 @@ public class ArrCharOps {
 
     public static int compareTo(String str1, String str2) {
         int minLength = Math.min(str1.length(), str2.length());
-    
+        if(str1.isEmpty() || str2.isEmpty()){
+            return -2;
+        }
         for (int i = 0; i < minLength; i++) {
             if (str1.charAt(i) < str2.charAt(i)) {
                 return -1;  
@@ -166,11 +168,8 @@ public class ArrCharOps {
         } else if (str1.length() > str2.length()) {
             return 1;   
         }
-        if(str1.length() == str2.length())
-        {
-            return 0;  
-        }
-        return -2;
+      return 0;
+        
         
     }
 }

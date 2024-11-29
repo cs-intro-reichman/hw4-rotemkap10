@@ -41,6 +41,16 @@ public class MyString {
     public static boolean contains(String str1, String str2) {
         String newStr1 = str1;
         String newStr2 = str2;
+        if(str2.isEmpty()){
+            return true;
+        }
+        if(str1.isEmpty()){
+            return false;
+        }
+        if (newStr2.length() > newStr1.length())
+        {
+            return false;
+        }
     
         if (newStr2.length() > newStr1.length())
         {

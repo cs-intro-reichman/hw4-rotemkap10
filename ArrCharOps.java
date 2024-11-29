@@ -109,7 +109,7 @@ public class ArrCharOps {
         int count = arr1.length;
         for(int i = 0; i<arr2.length;i++)
         {
-            arr[i+count] = arr2[count];
+            arr[i+count] = arr2[i];
         }
         return arr;
     }

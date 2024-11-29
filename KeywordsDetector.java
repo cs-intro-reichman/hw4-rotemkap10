@@ -20,7 +20,72 @@ public class KeywordsDetector {
 
     // Iterates through all the sentences.
     // If a sentence contains one or more of the kewords, prints it.
+    
     public static void detectAndPrint(String[] sentences, String[] keywords) {
-        // Replace this comment with your code
+        String []newSentence = new String [sentences.length];
+        String [] newKey = new String [keywords.length];
+        for(int i =0; i<keywords.length; i++)
+        {
+            newKey[i] = lowerCase(keywords[i]);
+        }
+        for(int i =0; i<sentences.length; i++)
+        {
+            newSentence[i] = lowerCase(sentences[i]);
+        }
+        for(int i =0; i < sentences.length; i++)
+        {
+            for(int j = 0; j < keywords.length; j++)
+            {
+                if(contains(newSentence[i],newKey[j]))
+                {
+                    System.out.println(sentences[i]);
+                    break;
+                }
+                
+            }
+        }
+       
+    }
+
+
+        
+
+    public static String lowerCase(String str) {
+        String newString = "";
+        for(int i = 0; i<str.length();i++)
+        {
+            if((str.charAt(i)>64) && (str.charAt(i)<91))
+            {
+                newString += (char)(str.charAt(i)+32);
+            }
+            else
+            {
+                newString += str.charAt(i);
+            }
+        }
+
+        return newString;
+    }
+    public static boolean contains(String str1, String str2) {
+        String newStr1 = lowerCase(str1);
+        String newStr2 = lowerCase(str2);
+    
+        if (newStr2.length() > newStr1.length())
+        {
+            return false;
+        }
+        for(int i =0; i<str2.length(); i++)
+        {
+            for(int j = 0; j<str1.length(); j++)
+            {
+                if(newStr2.charAt(i) == newStr1.charAt(j) && (j+str2.length()<=str1.length()))
+                {
+                     if(str2.equals(str1.substring(j,j+str2.length())))
+                        return true;
+                       
+                }
+            }
+        }
+        return false;
     }
 }

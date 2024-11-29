@@ -39,8 +39,8 @@ public class MyString {
 
     /** If str1 contains str2, returns true; otherwise returns false. */
     public static boolean contains(String str1, String str2) {
-        String newStr1 = lowerCase(str1);
-        String newStr2 = lowerCase(str2);
+        String newStr1 = str1;
+        String newStr2 = str2;
     
         if (newStr2.length() > newStr1.length())
         {
